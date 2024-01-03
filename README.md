@@ -1,46 +1,26 @@
-# Getting Started with Create React App
+# Task Description
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The application takes two optional parameters:
 
-## Available Scripts
+    Int – random seed
+    Log output filename – The default file name pattern is qrt_data_extraction_analysis_DD_MM_YYYY_HHMMSS.log
 
-In the project directory, you can run:
+Log entries will be automatically appended to this filename, and your application needs to process this file in as near to real-time as possible.
 
-### `npm start`
+Our challenge to you is to develop a tool simplify the extraction and analysis of the log output by this and other applications.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Some of the things your analysis tool should do include:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    Analyse multiple log files in parallel
+    Option to continuously analyse logs as they are updated
+    Filtering for important information (entered by user) – extra points for enabling regex
+    Highlighting of information (entered by user) – extra points for enabling regex
+    Display time difference between two entered points (rough latency analysis) statistical summary of all the times
+    Log will also contain statistical information which should be displayed / summarised in some form (graphical?)
+    Being able to save and reload selected options / filters etc…
+    Raising ‘alerts’ if a certain type message is found or a condition is met e.g. latency is above threshold for a given amount of time
+    Extra Bonus Points and Special Prizes will be awarded for novel and exciting features - nothing is off limits!
 
-### `npm test`
+Extra points for making the application work via a web browser, any messaging system or some kind of fruit.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Hidden within the log messages are lists of the QRT Team’s favourite movies. If you’ve implemented the features as described above then you should be able to spot these. There’s also three number sequences hidden in the output. The first team that can list all the movies and tell us what the number sequence is will win cool QRT merch!
