@@ -17,12 +17,13 @@ export default function Alerts() {
     return (
         <>
             <Flex vertical={true}>
+                <Title level={2}>Alerts</Title>
                 <List
                     size="large"
-                    header={<Title>Alerts</Title>}
                     bordered={true}
                     dataSource={data}
                     renderItem={(item) => <List.Item>{item}</List.Item>}
+                    pagination={false}
                 />
             </Flex>
         </>

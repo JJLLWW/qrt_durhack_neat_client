@@ -2,6 +2,7 @@ import { Button, Table, Select, Flex, Typography, Modal, Input, Space } from "an
 import React, { useState } from "react";
 import type { ColumnsType} from "antd/es/table";
 import { SearchOutlined } from '@ant-design/icons';
+import {data as Data} from '../test_data/log_file'
 
 const { Title } = Typography;
 
@@ -12,20 +13,14 @@ interface DataType {
     message: string;
     stats: string;
 }
-
-function get_val(i: number): DataType {
-    return {
-        key: `${i}`,
-        timestamp: '24/5/23 13:20:45.213789',
-        status: i % 2 === 0 ? 'INFO' : 'DEBUG',
-        message: 'Hello World',
-        stats: i % 3 === 0 ? 'NONE' : 'STATS'
-    }
+function dataFromEntry(entry: any, i: number)  {
+    let res = {key: `${i}`, ...entry}
+    res.stats = "NONE"
+    return res
 }
 
-const data: DataType[] = Array(50).fill({}).map((_: any, idx: number) => { return get_val(idx)})
-
-// how would highlighting work? <- react-highlight-words
+const data = Data.entries.map((ent: any, i:number) => { return dataFromEntry(ent, i) })
+// how would highlighting work? <- react-highlight-words library
 // only want regex search on the message, some kind of time interval for timestamp?
 // filterDropdown?
 // store the filter state in some object?
@@ -131,6 +126,7 @@ export default function MainWindow() {
             ],
             key: 'stats',
             width: '10%',
+            align: 'center',
             onFilter: (value: any, record: DataType) => {
                 if(value === 'WITH_STATS') {
                     return record.stats !== 'NONE';
@@ -141,8 +137,8 @@ export default function MainWindow() {
             render: (_: any, record: DataType) => {
                 return (
                     record.stats === 'NONE' ?
-                        <div>NONE</div> :
-                        <Button onClick={handleStatsClick}>Display Stats</Button>
+                        <div>None</div> :
+                        <Button onClick={handleStatsClick} type="link">Display Stats</Button>
                 )
             }
         }
