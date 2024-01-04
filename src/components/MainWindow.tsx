@@ -6,6 +6,16 @@ import {data as Data} from '../test_data/log_file'
 
 const { Title } = Typography;
 
+type StatFilter = 'with_stats' | 'without_stats'
+
+interface FilterState {
+    allowed_statuses?: string[];
+    message_regex?: string;
+    stat_filter?: StatFilter;
+    time_start?: string;
+    time_end?: string;
+}
+
 interface DataType {
     key: string;
     timestamp: string;
@@ -13,6 +23,7 @@ interface DataType {
     message: string;
     stats: string;
 }
+
 function dataFromEntry(entry: any, i: number)  {
     let res = {key: `${i}`, ...entry}
     res.stats = "NONE"
@@ -26,6 +37,7 @@ const data = Data.entries.map((ent: any, i:number) => { return dataFromEntry(ent
 // store the filter state in some object?
 export default function MainWindow() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [filterState, setFilterState] = useState<FilterState>({});
 
     const handleCancel = () => {
         setIsModalOpen(false);
@@ -86,6 +98,7 @@ export default function MainWindow() {
             title: 'Message',
             dataIndex: 'message',
             key: 'message',
+            ellipsis: true,
             filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters, close }) => {
                 return <div style={{ padding: 8 }}>
                     <Input
